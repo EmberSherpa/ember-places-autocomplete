@@ -2,7 +2,7 @@ import Ember from 'ember';
 import Application from '../../app';
 import config from '../../config/environment';
 
-import registerSelectPlaceHelper from './select-place';
+import registerSelectPlaceHelper from './ember-places-autocomplete/select-place';
 
 export default function startApp(attrs) {
   let application;
