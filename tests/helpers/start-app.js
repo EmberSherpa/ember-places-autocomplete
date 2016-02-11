@@ -2,6 +2,8 @@ import Ember from 'ember';
 import Application from '../../app';
 import config from '../../config/environment';
 
+import registerSelectPlaceHelper from './select-place';
+
 export default function startApp(attrs) {
   let application;
 
@@ -11,6 +13,7 @@ export default function startApp(attrs) {
   Ember.run(() => {
     application = Application.create(attributes);
     application.setupForTesting();
+    registerSelectPlaceHelper();
     application.injectTestHelpers();
   });
 

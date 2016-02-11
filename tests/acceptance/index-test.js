@@ -13,7 +13,7 @@ test('visiting /', function(assert) {
     assert.equal(Ember.$('.lat').text().trim(), '', 'lat is empty in the beginning');
     assert.equal(Ember.$('.lng').text().trim(), '', 'lng is empty in the beginning');
   });
-  // trigger selection somehow with { lat: 123, lng: 456 }
+  selectPlace({ lat: 123, lng: 456 });
   andThen(function(){
     assert.equal(Ember.$('.lat').text().trim(), '123', 'lat is set to 123');
     assert.equal(Ember.$('.lng').text().trim(), '456', 'lng is set to 456');
