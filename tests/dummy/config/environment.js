@@ -19,6 +19,10 @@ module.exports = function(environment) {
     }
   };
 
+  ENV['places-autocomplete'] = {
+    key: 'AIzaSyCfwHGovdaGGj4Dzt3fnB4zHhHjKLjISPA'
+  };
+
   if (environment === 'development') {
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;
