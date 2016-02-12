@@ -2,7 +2,13 @@ import Ember from 'ember';
 import { test } from 'qunit';
 import moduleForAcceptance from '../../tests/helpers/module-for-acceptance';
 
-moduleForAcceptance('Acceptance | application');
+import TestPlacesAutocomplete from 'ember-places-autocomplete/services/places-autocomplete';
+
+moduleForAcceptance('Acceptance | application', {
+  beforeEach() {
+    this.application.register('service:test-places-autocomplete', TestPlacesAutocomplete);
+  }
+});
 
 test('visiting /', function(assert) {
   visit('/');

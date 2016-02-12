@@ -3,7 +3,7 @@ import Ember from 'ember';
 function selectPlaceHelper(app, data) {
   
   Ember.run(function(){
-    let service = app.__container__.lookup('service:places-autocomplete');
+    let service = app.__container__.lookup('service:test-places-autocomplete');
     service.notify(data);    
   });
   

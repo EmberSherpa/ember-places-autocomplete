@@ -8,10 +8,13 @@ const {
 
 export default Ember.Component.extend({
   layout,
-  placesAutocomplete: inject.service(),
+  testPlacesAutocomplete: inject.service(),
   init() {
     this._super(...arguments);
-    this.get('placesAutocomplete').register(this);
+    let testPlacesAutocomplete = this.get('testPlacesAutocomplete');
+    if (testPlacesAutocomplete) {
+      testPlacesAutocomplete.register(this);
+    }
   },
   didInsertElement() {
     this._super(...arguments);
@@ -48,6 +51,9 @@ export default Ember.Component.extend({
   },
   willDestroy() {
     this._super(...arguments);
-    this.get('placesAutocomplete').unregister();
+    let testPlacesAutocomplete = this.get('testPlacesAutocomplete');
+    if (testPlacesAutocomplete) {
+      testPlacesAutocomplete.unregister();
+    }
   }
 });

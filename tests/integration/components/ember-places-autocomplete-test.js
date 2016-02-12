@@ -1,6 +1,8 @@
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 
+import TestPlacesAutocomplete from 'ember-places-autocomplete/services/places-autocomplete';
+
 moduleForComponent('ember-places-autocomplete', 'Integration | Component | ember places autocomplete', {
   integration: true
 });
@@ -9,8 +11,9 @@ test('it should receive data when service is notified', function(assert) {
   // Set any properties with this.set('myProperty', 'value');
   // Handle any actions with this.on('myAction', function(val) { ... });"
 
-  this.inject.service('places-autocomplete');
-  let service = this.get('places-autocomplete');
+  this.register('service:test-places-autocomplete', TestPlacesAutocomplete);
+  this.inject.service('test-places-autocomplete');
+  let service = this.get('test-places-autocomplete');
 
   let receivedData;
   this.on('showLocation', function(data){
