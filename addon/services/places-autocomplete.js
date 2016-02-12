@@ -1,4 +1,3 @@
-/* global google */
 import Ember from 'ember';
 
 const {
@@ -6,31 +5,17 @@ const {
 } = Ember;
 
 export default Ember.Service.extend(Evented, {
-  setup(input) {
-    let autocomplete = new google.maps.places.Autocomplete(input);
-    
-    let handler = Ember.run.bind(this, function() {
-		  let place = autocomplete.getPlace();
-      
-		  this.notify({
-        lat: place.geometry.location.lat(),
-        lng: place.geometry.location.lng(),
-        place
-      });
-	 });
-    
-    let listener = autocomplete.addListener('place_changed', handler);
-    
-    this.set('autocomplete', autocomplete);
-    this.set('listener', listener);
+  register(component){
+    this.component = component;
   },
-  teardown() {
-    let listener = this.get('listener');
-	  let autocomplete = this.get('autocomplete');
-	  google.maps.event.removeListener(listener);
-    google.maps.event.clearInstanceListeners(autocomplete);    
+  unregister() {
+    this.component = null;
   },
   notify(data) {
-    this.trigger('selected', data);
+    if (this.component) {
+      this.component.sendAction('on-select', data);      
+    } else {
+      Ember.Logger.log('Notify was called without a component being registred.');
+    }
   }
 });
