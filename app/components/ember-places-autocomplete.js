@@ -1,0 +1,1 @@
+export { default } from 'ember-places-autocomplete/components/ember-places-autocomplete';

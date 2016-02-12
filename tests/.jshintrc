@@ -21,7 +21,8 @@
     "andThen",
     "currentURL",
     "currentPath",
-    "currentRouteName"
+    "currentRouteName",
+    "selectPlace"
   ],
   "node": false,
   "browser": false,
